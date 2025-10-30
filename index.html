@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Informasi Profil</title>
+  <style>
+    /* ====== CSS ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Navigasi */
+    .navbar {
+      background: #004aad;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar ul li {
+      margin-left: 20px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                  url('https://source.unsplash.com/1600x900/?technology,office') center/cover no-repeat;
+      height: 100vh;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5em;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.1em;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: #ffcc00;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero button:hover {
+      background: #ffaa00;
+    }
+
+    /* Profil Section */
+    .profil {
+      padding: 100px 50px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    .profil-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .profil-img {
+      width: 200px;
+      border-radius: 50%;
+    }
+
+    .profil-info {
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .profil-info button {
+      margin-top: 10px;
+      padding: 8px 20px;
+      background: #004aad;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .profil-info button:hover {
+      background: #003580;
+    }
+
+    /* Kontak Section */
+    .kontak {
+      padding: 100px 50px;
+      background: #004aad;
+      color: white;
+      text-align: center;
+    }
+
+    .kontak form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .kontak input, .kontak textarea {
+      width: 80%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .kontak button {
+      background: #ffcc00;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .kontak button:hover {
+      background: #ffaa00;
+    }
+
+    /* Footer */
+    footer {
+      background: #002c70;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+      .profil-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profil-info {
+        text-align: center;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== HTML ====== -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Sistem Profil</h1>
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h2>Selamat Datang di Sistem Informasi Profil</h2>
+      <p>Tempat menampilkan data profil secara digital dan informatif.</p>
+      <button onclick="scrollToProfil()">Lihat Profil</button>
+    </div>
+  </section>
+
+  <!-- Profil Section -->
+  <section id="profil" class="profil">
+    <h2>Profil Singkat</h2>
+    <div class="profil-container">
+      <img src="https://via.placeholder.com/200" alt="Foto Profil" class="profil-img">
+      <div class="profil-info">
+        <h3 id="nama">Topan</h3>
+        <p id="deskripsi">
+          Uang adalah segalanya  dan gua tak bisa hidup tanpa uang.
+        </p>
+        <button onclick="ubahProfil()">Ubah Profil</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontak Section -->
+  <section id="kontak" class="kontak">
+    <h2>Hubungi Kami</h2>
+    <form id="formKontak" onsubmit="kirimPesan(event)">
+      <input type="text" id="namaKontak" placeholder="Nama" required>
+      <input type="email" id="emailKontak" placeholder="Email" required>
+      <textarea id="pesanKontak" placeholder="Pesan Anda..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sistem Informasi Profil - All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // ====== JavaScript ======
+
+    // Scroll ke bagian profil
+    function scrollToProfil() {
+      document.getElementById('profil').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Fungsi ubah profil
+    function ubahProfil() {
+      const namaBaru = prompt("Masukkan nama baru:");
+      const deskripsiBaru = prompt("Masukkan deskripsi baru:");
+
+      if (namaBaru && deskripsiBaru) {
+        document.getElementById('nama').textContent = namaBaru;
+        document.getElementById('deskripsi').textContent = deskripsiBaru;
+        alert("Profil berhasil diperbarui!");
+      } else {
+        alert("Perubahan dibatalkan.");
+      }
+    }
+
+    // Fungsi kirim pesan
+    function kirimPesan(event) {
+      event.preventDefault();
+      const nama = document.getElementById('namaKontak').value;
+      const email = document.getElementById('emailKontak').value;
+      const pesan = document.getElementById('pesanKontak').value;
+
+      if (nama && email && pesan) {
+        alert(`Terima kasih, ${nama}! Pesan Anda telah terkirim.`);
+        document.getElementById('formKontak').reset();
+      } else {
+        alert("Harap isi semua kolom!");
+      }
+    }
+  </script>
+</body>
+</html>
